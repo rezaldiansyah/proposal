@@ -111,78 +111,140 @@
                     destination</p>
 
                 <div class="airplane-container" id="airplane-viz">
-                    <!-- SVG Airplane -->
-                    <svg class="airplane-svg" viewBox="0 0 600 300" xmlns="http://www.w3.org/2000/svg">
-                        <!-- Fuselage -->
-                        <ellipse cx="300" cy="150" rx="180" ry="35" class="fuselage" />
-                        <ellipse cx="135" cy="150" rx="20" ry="30" class="nose" />
-                        <polygon points="460,150 520,100 520,200" class="tail" />
-                        <rect x="480" y="80" width="8" height="70" rx="3" class="tail-fin" />
+                    <!-- 3D Isometric Boeing 747 SVG -->
+                    <svg class="airplane-svg" viewBox="0 0 800 400" xmlns="http://www.w3.org/2000/svg">
+                        <defs>
+                            <!-- Gradients -->
+                            <linearGradient id="fuselage-gradient" x1="0%" y1="0%" x2="0%" y2="100%">
+                                <stop offset="0%" style="stop-color:#e2e8f0" />
+                                <stop offset="30%" style="stop-color:#cbd5e1" />
+                                <stop offset="70%" style="stop-color:#94a3b8" />
+                                <stop offset="100%" style="stop-color:#64748b" />
+                            </linearGradient>
+                            <linearGradient id="wing-gradient" x1="0%" y1="0%" x2="0%" y2="100%">
+                                <stop offset="0%" style="stop-color:#94a3b8" />
+                                <stop offset="100%" style="stop-color:#475569" />
+                            </linearGradient>
+                            <linearGradient id="engine-gradient" x1="0%" y1="0%" x2="0%" y2="100%">
+                                <stop offset="0%" style="stop-color:#64748b" />
+                                <stop offset="100%" style="stop-color:#334155" />
+                            </linearGradient>
+                            <linearGradient id="flame-gradient" x1="0%" y1="50%" x2="100%" y2="50%">
+                                <stop offset="0%" style="stop-color:#f97316;stop-opacity:1" />
+                                <stop offset="40%" style="stop-color:#fbbf24;stop-opacity:1" />
+                                <stop offset="100%" style="stop-color:#f97316;stop-opacity:0" />
+                            </linearGradient>
+                            <filter id="glow" x="-50%" y="-50%" width="200%" height="200%">
+                                <feGaussianBlur stdDeviation="3" result="coloredBlur" />
+                                <feMerge>
+                                    <feMergeNode in="coloredBlur" />
+                                    <feMergeNode in="SourceGraphic" />
+                                </feMerge>
+                            </filter>
+                        </defs>
 
-                        <!-- Wings -->
-                        <polygon points="200,150 350,150 380,80 170,80" class="wing wing-left" />
-                        <polygon points="200,150 350,150 380,220 170,220" class="wing wing-right" />
+                        <!-- Shadow -->
+                        <ellipse cx="400" cy="370" rx="220" ry="20" fill="rgba(0,0,0,0.3)" class="shadow" />
 
-                        <!-- Engine 1: Placement Ads -->
+                        <!-- Left Wing (back) -->
+                        <path d="M280,200 L100,230 L80,250 L120,260 L300,220 Z" fill="url(#wing-gradient)"
+                            class="wing-back" />
+
+                        <!-- Engine 1: Placement Ads (Left Outer) -->
                         <g class="engine engine-1" data-engine="placement" data-active="false">
-                            <rect x="175" y="60" width="50" height="25" rx="5" class="engine-body" />
-                            <rect x="165" y="62" width="15" height="21" rx="2" class="engine-intake" />
+                            <ellipse cx="140" cy="245" rx="20" ry="12" fill="url(#engine-gradient)"
+                                class="engine-body" />
+                            <ellipse cx="125" cy="245" rx="8" ry="10" fill="#1e293b" class="engine-intake" />
+                            <rect x="140" y="237" width="25" height="16" rx="3" fill="url(#engine-gradient)" />
                             <g class="flame" opacity="0">
-                                <ellipse cx="240" cy="72" rx="20" ry="8" fill="url(#flame-gradient)" />
+                                <ellipse cx="180" cy="245" rx="25" ry="8" fill="url(#flame-gradient)"
+                                    filter="url(#glow)" />
                             </g>
                         </g>
 
-                        <!-- Engine 2: Digital -->
+                        <!-- Engine 2: Digital (Left Inner) -->
                         <g class="engine engine-2" data-engine="digital" data-active="false">
-                            <rect x="285" y="60" width="50" height="25" rx="5" class="engine-body" />
-                            <rect x="275" y="62" width="15" height="21" rx="2" class="engine-intake" />
+                            <ellipse cx="220" cy="225" rx="18" ry="11" fill="url(#engine-gradient)"
+                                class="engine-body" />
+                            <ellipse cx="207" cy="225" rx="7" ry="9" fill="#1e293b" class="engine-intake" />
+                            <rect x="220" y="218" width="22" height="14" rx="3" fill="url(#engine-gradient)" />
                             <g class="flame" opacity="0">
-                                <ellipse cx="350" cy="72" rx="20" ry="8" fill="url(#flame-gradient)" />
+                                <ellipse cx="255" cy="225" rx="22" ry="7" fill="url(#flame-gradient)"
+                                    filter="url(#glow)" />
                             </g>
                         </g>
 
-                        <!-- Engine 3: Ngajilah -->
-                        <g class="engine engine-3" data-engine="ngajilah" data-active="false">
-                            <rect x="175" y="215" width="50" height="25" rx="5" class="engine-body" />
-                            <rect x="165" y="217" width="15" height="21" rx="2" class="engine-intake" />
-                            <g class="flame" opacity="0">
-                                <ellipse cx="240" cy="228" rx="20" ry="8" fill="url(#flame-gradient)" />
-                            </g>
-                        </g>
+                        <!-- Fuselage (main body) -->
+                        <path d="M150,195 
+                                 Q120,200 100,200 
+                                 Q80,200 70,195 
+                                 L70,185 
+                                 Q80,175 100,175 
+                                 Q120,175 150,180 
+                                 L650,165 
+                                 Q700,170 720,190 
+                                 Q700,210 650,215 
+                                 L150,195 Z" fill="url(#fuselage-gradient)" class="fuselage" />
 
-                        <!-- Engine 4: Milah Tour -->
-                        <g class="engine engine-4" data-engine="milah" data-active="false">
-                            <rect x="285" y="215" width="50" height="25" rx="5" class="engine-body" />
-                            <rect x="275" y="217" width="15" height="21" rx="2" class="engine-intake" />
-                            <g class="flame" opacity="0">
-                                <ellipse cx="350" cy="228" rx="20" ry="8" fill="url(#flame-gradient)" />
-                            </g>
-                        </g>
+                        <!-- Blue stripe -->
+                        <path d="M100,187 L700,177 L700,183 L100,193 Z" fill="#0ea5e9" opacity="0.8" />
 
                         <!-- Windows -->
                         <g class="windows">
-                            <circle cx="180" cy="145" r="5" fill="#38bdf8" opacity="0.8" />
-                            <circle cx="200" cy="145" r="5" fill="#38bdf8" opacity="0.8" />
-                            <circle cx="220" cy="145" r="5" fill="#38bdf8" opacity="0.8" />
-                            <circle cx="240" cy="145" r="5" fill="#38bdf8" opacity="0.8" />
-                            <circle cx="260" cy="145" r="5" fill="#38bdf8" opacity="0.8" />
-                            <circle cx="280" cy="145" r="5" fill="#38bdf8" opacity="0.8" />
-                            <circle cx="300" cy="145" r="5" fill="#38bdf8" opacity="0.8" />
+                            <circle cx="180" cy="182" r="4" fill="#38bdf8" />
+                            <circle cx="200" cy="181" r="4" fill="#38bdf8" />
+                            <circle cx="220" cy="180" r="4" fill="#38bdf8" />
+                            <circle cx="240" cy="179" r="4" fill="#38bdf8" />
+                            <circle cx="260" cy="178" r="4" fill="#38bdf8" />
+                            <circle cx="280" cy="177" r="4" fill="#38bdf8" />
+                            <circle cx="300" cy="176" r="4" fill="#38bdf8" />
+                            <circle cx="320" cy="175" r="4" fill="#38bdf8" />
+                            <circle cx="340" cy="174" r="4" fill="#38bdf8" />
+                            <circle cx="360" cy="173" r="4" fill="#38bdf8" />
+                            <circle cx="380" cy="172" r="4" fill="#38bdf8" />
                         </g>
 
-                        <!-- Gradients -->
-                        <defs>
-                            <linearGradient id="flame-gradient" x1="0%" y1="0%" x2="100%" y2="0%">
-                                <stop offset="0%" style="stop-color:#ff6b35;stop-opacity:1" />
-                                <stop offset="50%" style="stop-color:#f7c531;stop-opacity:1" />
-                                <stop offset="100%" style="stop-color:#ff6b35;stop-opacity:0" />
-                            </linearGradient>
-                            <linearGradient id="fuselage-gradient" x1="0%" y1="0%" x2="0%" y2="100%">
-                                <stop offset="0%" style="stop-color:#4a5568" />
-                                <stop offset="50%" style="stop-color:#2d3748" />
-                                <stop offset="100%" style="stop-color:#1a202c" />
-                            </linearGradient>
-                        </defs>
+                        <!-- Cockpit -->
+                        <ellipse cx="85" cy="188" rx="18" ry="12" fill="#1e293b" />
+                        <ellipse cx="85" cy="185" rx="12" ry="7" fill="#0ea5e9" opacity="0.5" />
+
+                        <!-- Right Wing (front) -->
+                        <path d="M280,180 L100,150 L80,130 L120,120 L300,165 Z" fill="url(#wing-gradient)"
+                            class="wing-front" />
+
+                        <!-- Engine 3: Ngajilah (Right Outer) -->
+                        <g class="engine engine-3" data-engine="ngajilah" data-active="false">
+                            <ellipse cx="140" cy="135" rx="20" ry="12" fill="url(#engine-gradient)"
+                                class="engine-body" />
+                            <ellipse cx="125" cy="135" rx="8" ry="10" fill="#1e293b" class="engine-intake" />
+                            <rect x="140" y="127" width="25" height="16" rx="3" fill="url(#engine-gradient)" />
+                            <g class="flame" opacity="0">
+                                <ellipse cx="180" cy="135" rx="25" ry="8" fill="url(#flame-gradient)"
+                                    filter="url(#glow)" />
+                            </g>
+                        </g>
+
+                        <!-- Engine 4: Milah Tour (Right Inner) -->
+                        <g class="engine engine-4" data-engine="milah" data-active="false">
+                            <ellipse cx="220" cy="155" rx="18" ry="11" fill="url(#engine-gradient)"
+                                class="engine-body" />
+                            <ellipse cx="207" cy="155" rx="7" ry="9" fill="#1e293b" class="engine-intake" />
+                            <rect x="220" y="148" width="22" height="14" rx="3" fill="url(#engine-gradient)" />
+                            <g class="flame" opacity="0">
+                                <ellipse cx="255" cy="155" rx="22" ry="7" fill="url(#flame-gradient)"
+                                    filter="url(#glow)" />
+                            </g>
+                        </g>
+
+                        <!-- Tail -->
+                        <path d="M680,170 L720,100 L735,100 L735,120 L700,175 Z" fill="url(#wing-gradient)"
+                            class="tail-fin" />
+                        <path d="M670,185 L720,190 L700,210 L650,205 Z" fill="url(#wing-gradient)" class="tail-wing" />
+
+                        <!-- Destination marker -->
+                        <g class="destination" opacity="0.6">
+                            <text x="750" y="190" fill="#10b981" font-size="12" font-weight="bold">→</text>
+                        </g>
                     </svg>
 
                     <!-- Engine Labels -->
@@ -213,7 +275,7 @@
                 <!-- Status Message -->
                 <div class="airplane-status" id="airplane-status">
                     <span class="status-icon">💡</span>
-                    <span class="status-text">Hover over each engine to power it up!</span>
+                    <span class="status-text">Click each engine to power it up!</span>
                 </div>
 
                 <!-- Synergy Message -->

@@ -259,14 +259,20 @@ console.log(
 console.log('%c Annual Meeting 2026 Presentation', 'color: #38bdf8; font-size: 12px;');
 console.log('%c Navigate with arrow keys or swipe', 'color: #666; font-size: 11px;');
 
+// Make Reveal globally accessible for agenda navigation (BEFORE DOMContentLoaded)
+window.Reveal = deck;
+
 // ================================================
 // FLOATING AGENDA MENU
 // ================================================
-document.addEventListener('DOMContentLoaded', () => {
+deck.on('ready', () => {
     const agendaToggle = document.getElementById('agenda-toggle');
     const agendaNav = document.getElementById('agenda-nav');
     const agendaClose = document.getElementById('agenda-close');
     const agendaLinks = document.querySelectorAll('.agenda-list a, .agenda-item');
+
+    console.log('%c 📋 Agenda Menu Initialized', 'color: #10b981; font-size: 11px;');
+    console.log('Found', agendaLinks.length, 'navigation links');
 
     if (agendaToggle && agendaNav) {
         // Toggle menu
@@ -289,15 +295,19 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
 
-        // Navigate on link click
+        // Navigate on link click - use deck directly
         agendaLinks.forEach(link => {
             link.addEventListener('click', (e) => {
                 e.preventDefault();
+                e.stopPropagation();
+
                 const href = link.getAttribute('href');
                 const slideIndex = parseInt(href.replace('#/', ''));
 
-                if (!isNaN(slideIndex) && window.Reveal) {
-                    Reveal.slide(slideIndex);
+                console.log('Navigating to slide:', slideIndex);
+
+                if (!isNaN(slideIndex)) {
+                    deck.slide(slideIndex, 0, 0);
                 }
 
                 agendaNav.classList.remove('active');
@@ -305,21 +315,19 @@ document.addEventListener('DOMContentLoaded', () => {
         });
 
         // Update active state on slide change
-        if (window.Reveal) {
-            Reveal.on('slidechanged', (event) => {
-                agendaLinks.forEach(link => {
-                    const href = link.getAttribute('href');
-                    if (href) {
-                        const slideIndex = parseInt(href.replace('#/', ''));
-                        if (slideIndex === event.indexh) {
-                            link.classList.add('active');
-                        } else {
-                            link.classList.remove('active');
-                        }
+        deck.on('slidechanged', (event) => {
+            agendaLinks.forEach(link => {
+                const href = link.getAttribute('href');
+                if (href) {
+                    const slideIndex = parseInt(href.replace('#/', ''));
+                    if (slideIndex === event.indexh) {
+                        link.classList.add('active');
+                    } else {
+                        link.classList.remove('active');
                     }
-                });
+                }
             });
-        }
+        });
 
         // Close menu on Escape key
         document.addEventListener('keydown', (e) => {
@@ -329,9 +337,6 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 });
-
-// Make Reveal globally accessible for agenda navigation
-window.Reveal = deck;
 
 // ================================================
 // BOEING AIRPLANE VISUALIZATION INTERACTIVITY
