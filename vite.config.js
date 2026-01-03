@@ -2,7 +2,7 @@ import { defineConfig } from 'vite'
 import { resolve } from 'path'
 
 export default defineConfig({
-    base: process.env.NODE_ENV === 'production' ? '/presentation/' : '/',
+    base: process.env.NODE_ENV === 'production' ? '/proposal/' : '/',
     build: {
         outDir: 'dist',
         rollupOptions: {
