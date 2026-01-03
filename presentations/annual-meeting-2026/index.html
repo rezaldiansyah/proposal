@@ -16,11 +16,40 @@
     <!-- Back to Directory -->
     <a href="/" class="back-link">← Back to Directory</a>
 
+    <!-- Floating Agenda Menu -->
+    <div class="agenda-menu" id="agenda-menu">
+        <button class="agenda-toggle" id="agenda-toggle" title="Navigate Slides">
+            <span class="agenda-icon">☰</span>
+        </button>
+        <nav class="agenda-nav" id="agenda-nav">
+            <div class="agenda-header">
+                <span>📋 Agenda</span>
+                <button class="agenda-close" id="agenda-close">×</button>
+            </div>
+            <ul class="agenda-list">
+                <li><a href="#/0" data-slide="0">🎬 Cover</a></li>
+                <li><a href="#/1" data-slide="1">📋 Today's Agenda</a></li>
+                <li><a href="#/2" data-slide="2">⚡ Current State</a></li>
+                <li><a href="#/3" data-slide="3">🎯 Transformation Vision</a></li>
+                <li><a href="#/4" data-slide="4">🏛️ Our 4 Business Pillars</a></li>
+                <li><a href="#/5" data-slide="5">🔄 Strategic Pivot</a></li>
+                <li><a href="#/6" data-slide="6">💼 Two Strategic Initiatives</a></li>
+                <li><a href="#/7" data-slide="7">🛠️ Methodology Framework</a></li>
+                <li><a href="#/8" data-slide="8">📅 90-Day Work Plan</a></li>
+                <li><a href="#/9" data-slide="9">📊 90-Day Timeline</a></li>
+                <li><a href="#/10" data-slide="10">🎯 Q1 2026 Milestones</a></li>
+                <li><a href="#/11" data-slide="11">🗺️ Roadmap 2026</a></li>
+                <li><a href="#/12" data-slide="12">📈 Success Metrics</a></li>
+                <li><a href="#/13" data-slide="13">🚀 Let's Build Together</a></li>
+            </ul>
+        </nav>
+    </div>
+
     <div class="reveal">
         <div class="slides">
 
             <!-- ==================== SLIDE 1: COVER ==================== -->
-            <section class="slide-cover">
+            <section class="slide-cover" data-slide-id="cover">
                 <div class="logo">
                     <span>Habits</span>
                     <span>Media</span>
@@ -32,20 +61,23 @@
             </section>
 
             <!-- ==================== SLIDE 2: AGENDA ==================== -->
-            <section class="slide-content">
+            <section class="slide-content" data-slide-id="agenda">
                 <h2>Today's Agenda</h2>
-                <ul>
-                    <li class="fragment fade-up">Current State & Transformation Vision</li>
-                    <li class="fragment fade-up">Our 4 Business Pillars</li>
-                    <li class="fragment fade-up">Strategic Pivot: B2B & Media Network</li>
-                    <li class="fragment fade-up">Methodology Framework</li>
-                    <li class="fragment fade-up">90-Day Work Plan</li>
-                    <li class="fragment fade-up">Roadmap 2026 & Success Metrics</li>
+                <ul class="agenda-clickable">
+                    <li class="fragment fade-up"><a href="#/2" class="agenda-item">📍 Current State & Transformation
+                            Vision</a></li>
+                    <li class="fragment fade-up"><a href="#/4" class="agenda-item">🏛️ Our 4 Business Pillars</a></li>
+                    <li class="fragment fade-up"><a href="#/5" class="agenda-item">🔄 Strategic Pivot: B2B & Media
+                            Network</a></li>
+                    <li class="fragment fade-up"><a href="#/7" class="agenda-item">🛠️ Methodology Framework</a></li>
+                    <li class="fragment fade-up"><a href="#/8" class="agenda-item">📅 90-Day Work Plan</a></li>
+                    <li class="fragment fade-up"><a href="#/11" class="agenda-item">🗺️ Roadmap 2026 & Success
+                            Metrics</a></li>
                 </ul>
             </section>
 
             <!-- ==================== SLIDE 3: CURRENT STATE ==================== -->
-            <section class="slide-content">
+            <section class="slide-content" data-slide-id="current-state">
                 <h2>Current State: The Challenge</h2>
                 <div class="grid-2">
                     <div class="info-card accent">
@@ -66,14 +98,14 @@
             </section>
 
             <!-- ==================== SLIDE 4: VISION ==================== -->
-            <section class="slide-section">
+            <section class="slide-section" data-slide-id="vision">
                 <div class="section-number">01</div>
                 <h2>Transformation Vision</h2>
                 <p style="color: var(--text-muted); font-size: 0.7em;">Building systems that outlast individuals</p>
             </section>
 
             <!-- ==================== SLIDE 5: 4 PILLARS ==================== -->
-            <section class="slide-content">
+            <section class="slide-content" data-slide-id="pillars">
                 <h2>Our 4 Business Pillars</h2>
                 <div class="grid-4">
                     <div class="pillar-card fragment fade-up" style="border-top: 4px solid #3b82f6;">
@@ -100,14 +132,14 @@
             </section>
 
             <!-- ==================== SLIDE 6: STRATEGIC PIVOT ==================== -->
-            <section class="slide-section">
+            <section class="slide-section" data-slide-id="pivot">
                 <div class="section-number">02</div>
                 <h2>Strategic Pivot</h2>
                 <p style="color: var(--text-muted); font-size: 0.7em;">From episodic events to sustainable revenue</p>
             </section>
 
             <!-- ==================== SLIDE 7: B2B & MEDIA NETWORK ==================== -->
-            <section class="slide-content">
+            <section class="slide-content" data-slide-id="initiatives">
                 <h2>Two Strategic Initiatives</h2>
                 <div class="grid-2">
                     <div class="info-card" style="border-left: 4px solid #3b82f6;">
@@ -132,7 +164,7 @@
             </section>
 
             <!-- ==================== SLIDE 8: METHODOLOGY ==================== -->
-            <section class="slide-content">
+            <section class="slide-content" data-slide-id="methodology">
                 <h2>Our Methodology Framework</h2>
                 <div class="method-grid">
                     <div class="method-card fragment fade-up">
@@ -159,20 +191,20 @@
             </section>
 
             <!-- ==================== SLIDE 9: 90-DAY PLAN ==================== -->
-            <section class="slide-section">
+            <section class="slide-section" data-slide-id="plan-intro">
                 <div class="section-number">03</div>
                 <h2>90-Day Work Plan</h2>
                 <p style="color: var(--text-muted); font-size: 0.7em;">The Diagnostic Phase</p>
             </section>
 
             <!-- ==================== SLIDE 10: TIMELINE ==================== -->
-            <section class="slide-chart">
+            <section class="slide-chart" data-slide-id="timeline">
                 <h2>90-Day Implementation Timeline</h2>
                 <div id="timeline-chart" class="chart-container"></div>
             </section>
 
             <!-- ==================== SLIDE 11: Q1 MILESTONES ==================== -->
-            <section class="slide-content">
+            <section class="slide-content" data-slide-id="milestones">
                 <h2>Q1 2026 Key Milestones</h2>
                 <div class="timeline">
                     <div class="timeline-item fragment fade-up">
@@ -199,13 +231,13 @@
             </section>
 
             <!-- ==================== SLIDE 12: ROADMAP 2026 ==================== -->
-            <section class="slide-chart">
+            <section class="slide-chart" data-slide-id="roadmap">
                 <h2>Roadmap 2026</h2>
                 <div id="roadmap-chart" class="chart-container"></div>
             </section>
 
             <!-- ==================== SLIDE 13: METRICS ==================== -->
-            <section class="slide-content">
+            <section class="slide-content" data-slide-id="metrics">
                 <h2>Success Metrics</h2>
                 <div class="stat-grid">
                     <div class="stat-item fragment fade-up">
@@ -238,7 +270,7 @@
             </section>
 
             <!-- ==================== SLIDE 14: CTA ==================== -->
-            <section class="slide-cover">
+            <section class="slide-cover" data-slide-id="closing">
                 <div class="logo" style="font-size: 1.5em;">
                     <span>Habits</span>
                     <span>Media</span>

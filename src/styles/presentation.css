@@ -378,3 +378,179 @@
 .reveal .fragment.fade-up.visible {
     transform: translateY(0);
 }
+
+/* ================================================
+   FLOATING AGENDA MENU
+   ================================================ */
+.agenda-menu {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    z-index: 200;
+}
+
+.agenda-toggle {
+    width: 48px;
+    height: 48px;
+    background: var(--bg-card);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.agenda-toggle:hover {
+    background: rgba(56, 189, 248, 0.2);
+    border-color: var(--accent);
+}
+
+.agenda-icon {
+    font-size: 20px;
+    color: var(--text-muted);
+    transition: color 0.3s ease;
+}
+
+.agenda-toggle:hover .agenda-icon {
+    color: var(--accent);
+}
+
+.agenda-nav {
+    position: absolute;
+    top: 56px;
+    right: 0;
+    width: 280px;
+    background: var(--bg-card);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 12px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-10px);
+    transition: all 0.3s ease;
+    max-height: 70vh;
+    overflow-y: auto;
+}
+
+.agenda-nav.active {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+.agenda-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px 16px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    font-weight: 600;
+    font-size: 14px;
+    color: var(--accent);
+}
+
+.agenda-close {
+    background: none;
+    border: none;
+    color: var(--text-muted);
+    font-size: 24px;
+    cursor: pointer;
+    line-height: 1;
+    padding: 0;
+    transition: color 0.2s ease;
+}
+
+.agenda-close:hover {
+    color: #fff;
+}
+
+.agenda-list {
+    list-style: none;
+    padding: 8px 0;
+    margin: 0;
+}
+
+.agenda-list li {
+    padding: 0;
+}
+
+.agenda-list li::before {
+    display: none;
+}
+
+.agenda-list a {
+    display: block;
+    padding: 10px 16px;
+    color: var(--text-muted);
+    text-decoration: none;
+    font-size: 13px;
+    transition: all 0.2s ease;
+}
+
+.agenda-list a:hover {
+    background: rgba(56, 189, 248, 0.1);
+    color: var(--accent);
+    padding-left: 20px;
+}
+
+.agenda-list a.active {
+    background: rgba(56, 189, 248, 0.15);
+    color: var(--accent);
+    border-left: 3px solid var(--accent);
+}
+
+/* ================================================
+   CLICKABLE AGENDA ITEMS
+   ================================================ */
+.agenda-clickable {
+    list-style: none;
+    padding: 0;
+}
+
+.agenda-clickable li {
+    padding: 0;
+    margin-bottom: 0.5em;
+}
+
+.agenda-clickable li::before {
+    display: none;
+}
+
+.agenda-item {
+    display: block;
+    padding: 0.8em 1.2em;
+    background: var(--bg-card);
+    border-radius: 8px;
+    color: #fff;
+    text-decoration: none;
+    font-size: 0.8em;
+    transition: all 0.3s ease;
+    border-left: 4px solid transparent;
+}
+
+.agenda-item:hover {
+    background: rgba(56, 189, 248, 0.15);
+    border-left-color: var(--accent);
+    transform: translateX(8px);
+    color: var(--accent);
+}
+
+/* Scrollbar for agenda nav */
+.agenda-nav::-webkit-scrollbar {
+    width: 6px;
+}
+
+.agenda-nav::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.agenda-nav::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 3px;
+}
+
+.agenda-nav::-webkit-scrollbar-thumb:hover {
+    background: rgba(255, 255, 255, 0.3);
+}

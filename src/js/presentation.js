@@ -258,3 +258,77 @@ console.log(
 );
 console.log('%c Annual Meeting 2026 Presentation', 'color: #38bdf8; font-size: 12px;');
 console.log('%c Navigate with arrow keys or swipe', 'color: #666; font-size: 11px;');
+
+// ================================================
+// FLOATING AGENDA MENU
+// ================================================
+document.addEventListener('DOMContentLoaded', () => {
+    const agendaToggle = document.getElementById('agenda-toggle');
+    const agendaNav = document.getElementById('agenda-nav');
+    const agendaClose = document.getElementById('agenda-close');
+    const agendaLinks = document.querySelectorAll('.agenda-list a, .agenda-item');
+
+    if (agendaToggle && agendaNav) {
+        // Toggle menu
+        agendaToggle.addEventListener('click', (e) => {
+            e.stopPropagation();
+            agendaNav.classList.toggle('active');
+        });
+
+        // Close button
+        if (agendaClose) {
+            agendaClose.addEventListener('click', () => {
+                agendaNav.classList.remove('active');
+            });
+        }
+
+        // Close when clicking outside
+        document.addEventListener('click', (e) => {
+            if (!agendaNav.contains(e.target) && !agendaToggle.contains(e.target)) {
+                agendaNav.classList.remove('active');
+            }
+        });
+
+        // Navigate on link click
+        agendaLinks.forEach(link => {
+            link.addEventListener('click', (e) => {
+                e.preventDefault();
+                const href = link.getAttribute('href');
+                const slideIndex = parseInt(href.replace('#/', ''));
+
+                if (!isNaN(slideIndex) && window.Reveal) {
+                    Reveal.slide(slideIndex);
+                }
+
+                agendaNav.classList.remove('active');
+            });
+        });
+
+        // Update active state on slide change
+        if (window.Reveal) {
+            Reveal.on('slidechanged', (event) => {
+                agendaLinks.forEach(link => {
+                    const href = link.getAttribute('href');
+                    if (href) {
+                        const slideIndex = parseInt(href.replace('#/', ''));
+                        if (slideIndex === event.indexh) {
+                            link.classList.add('active');
+                        } else {
+                            link.classList.remove('active');
+                        }
+                    }
+                });
+            });
+        }
+
+        // Close menu on Escape key
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') {
+                agendaNav.classList.remove('active');
+            }
+        });
+    }
+});
+
+// Make Reveal globally accessible for agenda navigation
+window.Reveal = deck;
