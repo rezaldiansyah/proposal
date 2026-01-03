@@ -554,3 +554,276 @@
 .agenda-nav::-webkit-scrollbar-thumb:hover {
     background: rgba(255, 255, 255, 0.3);
 }
+
+/* ================================================
+   BOEING AIRPLANE VISUALIZATION
+   ================================================ */
+.slide-airplane {
+    text-align: center !important;
+}
+
+.slide-airplane h2 {
+    text-align: center;
+    border-bottom: none;
+}
+
+.airplane-subtitle {
+    font-size: 0.65em;
+    color: var(--text-muted);
+    margin-bottom: 1em;
+    font-style: italic;
+}
+
+.airplane-container {
+    position: relative;
+    width: 100%;
+    max-width: 700px;
+    margin: 0 auto;
+}
+
+.airplane-svg {
+    width: 100%;
+    height: auto;
+    transition: transform 0.5s ease;
+}
+
+/* Airplane SVG Parts */
+.fuselage {
+    fill: #3a4a5c;
+    stroke: #4a5a6c;
+    stroke-width: 2;
+}
+
+.nose {
+    fill: #2d3a4c;
+    stroke: #4a5a6c;
+    stroke-width: 2;
+}
+
+.tail,
+.tail-fin {
+    fill: #3a4a5c;
+    stroke: #4a5a6c;
+    stroke-width: 2;
+}
+
+.wing {
+    fill: #4a5a6c;
+    stroke: #5a6a7c;
+    stroke-width: 1;
+}
+
+/* Engines */
+.engine {
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.engine-body {
+    fill: #2d3a4c;
+    stroke: #4a5a6c;
+    stroke-width: 2;
+    transition: all 0.3s ease;
+}
+
+.engine-intake {
+    fill: #1a2535;
+    stroke: #3a4a5c;
+    stroke-width: 1;
+}
+
+.engine:hover .engine-body,
+.engine.active .engine-body {
+    fill: #38bdf8;
+    stroke: #0ea5e9;
+}
+
+.engine .flame {
+    transition: opacity 0.3s ease;
+}
+
+.engine:hover .flame,
+.engine.active .flame {
+    opacity: 1 !important;
+    animation: flicker 0.15s infinite alternate;
+}
+
+@keyframes flicker {
+    0% {
+        opacity: 0.8;
+        transform: scaleX(0.95);
+    }
+
+    100% {
+        opacity: 1;
+        transform: scaleX(1.05);
+    }
+}
+
+/* Engine Labels */
+.engine-labels {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    pointer-events: none;
+}
+
+.engine-label {
+    position: absolute;
+    background: var(--bg-card);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 8px;
+    padding: 0.5em 0.8em;
+    text-align: center;
+    opacity: 0;
+    transform: translateY(-10px);
+    transition: all 0.3s ease;
+    pointer-events: auto;
+    cursor: pointer;
+    min-width: 100px;
+}
+
+.engine-label.active,
+.engine-label:hover {
+    opacity: 1;
+    transform: translateY(0);
+    background: rgba(56, 189, 248, 0.15);
+    border-color: var(--accent);
+}
+
+.label-1 {
+    top: 5%;
+    left: 15%;
+}
+
+.label-2 {
+    top: 5%;
+    right: 25%;
+}
+
+.label-3 {
+    bottom: 15%;
+    left: 15%;
+}
+
+.label-4 {
+    bottom: 15%;
+    right: 25%;
+}
+
+.engine-icon {
+    display: block;
+    font-size: 1.5em;
+    margin-bottom: 0.2em;
+}
+
+.engine-name {
+    display: block;
+    font-size: 0.55em;
+    font-weight: 700;
+    color: #fff;
+}
+
+.engine-desc {
+    display: block;
+    font-size: 0.45em;
+    color: var(--text-muted);
+}
+
+/* Status Message */
+.airplane-status {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5em;
+    margin-top: 1em;
+    padding: 0.6em 1.2em;
+    background: var(--bg-card);
+    border-radius: 8px;
+    font-size: 0.6em;
+    transition: all 0.3s ease;
+}
+
+.airplane-status.success {
+    background: rgba(16, 185, 129, 0.2);
+    border: 1px solid #10b981;
+}
+
+.airplane-status.warning {
+    background: rgba(249, 115, 22, 0.2);
+    border: 1px solid #f97316;
+}
+
+.status-icon {
+    font-size: 1.2em;
+}
+
+.status-text {
+    color: var(--text-muted);
+}
+
+.airplane-status.success .status-text {
+    color: #10b981;
+}
+
+.airplane-status.warning .status-text {
+    color: #f97316;
+}
+
+/* Synergy Message */
+.synergy-message {
+    margin-top: 1em;
+    padding: 0.8em 1.5em;
+    background: linear-gradient(135deg, rgba(56, 189, 248, 0.15), transparent);
+    border: 1px solid rgba(56, 189, 248, 0.3);
+    border-radius: 10px;
+    text-align: center;
+}
+
+.synergy-message p {
+    font-size: 0.65em;
+    margin: 0;
+    color: #fff;
+}
+
+.synergy-message strong {
+    color: var(--accent);
+}
+
+.synergy-message em {
+    color: #10b981;
+}
+
+/* Airplane Flying Animation */
+.airplane-svg.flying {
+    animation: fly 2s ease-in-out infinite;
+}
+
+@keyframes fly {
+
+    0%,
+    100% {
+        transform: translateY(0) rotate(0deg);
+    }
+
+    50% {
+        transform: translateY(-10px) rotate(-1deg);
+    }
+}
+
+/* All engines active state */
+.airplane-container.all-active .airplane-svg {
+    animation: fly 2s ease-in-out infinite;
+}
+
+.airplane-container.all-active .engine .flame {
+    opacity: 1 !important;
+}
+
+/* Show all labels when container is focused */
+.airplane-container:hover .engine-label {
+    opacity: 1;
+    transform: translateY(0);
+}

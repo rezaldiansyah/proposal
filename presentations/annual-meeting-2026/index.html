@@ -104,30 +104,122 @@
                 <p style="color: var(--text-muted); font-size: 0.7em;">Building systems that outlast individuals</p>
             </section>
 
-            <!-- ==================== SLIDE 5: 4 PILLARS ==================== -->
-            <section class="slide-content" data-slide-id="pillars">
+            <!-- ==================== SLIDE 5: 4 PILLARS - BOEING VISUALIZATION ==================== -->
+            <section class="slide-content slide-airplane" data-slide-id="pillars">
                 <h2>Our 4 Business Pillars</h2>
-                <div class="grid-4">
-                    <div class="pillar-card fragment fade-up" style="border-top: 4px solid #3b82f6;">
-                        <div class="icon">🎪</div>
-                        <h4>Placement Ads</h4>
-                        <p>B2B and Summit</p>
+                <p class="airplane-subtitle">Like a Boeing 747, all 4 engines must work together to reach our
+                    destination</p>
+
+                <div class="airplane-container" id="airplane-viz">
+                    <!-- SVG Airplane -->
+                    <svg class="airplane-svg" viewBox="0 0 600 300" xmlns="http://www.w3.org/2000/svg">
+                        <!-- Fuselage -->
+                        <ellipse cx="300" cy="150" rx="180" ry="35" class="fuselage" />
+                        <ellipse cx="135" cy="150" rx="20" ry="30" class="nose" />
+                        <polygon points="460,150 520,100 520,200" class="tail" />
+                        <rect x="480" y="80" width="8" height="70" rx="3" class="tail-fin" />
+
+                        <!-- Wings -->
+                        <polygon points="200,150 350,150 380,80 170,80" class="wing wing-left" />
+                        <polygon points="200,150 350,150 380,220 170,220" class="wing wing-right" />
+
+                        <!-- Engine 1: Placement Ads -->
+                        <g class="engine engine-1" data-engine="placement" data-active="false">
+                            <rect x="175" y="60" width="50" height="25" rx="5" class="engine-body" />
+                            <rect x="165" y="62" width="15" height="21" rx="2" class="engine-intake" />
+                            <g class="flame" opacity="0">
+                                <ellipse cx="240" cy="72" rx="20" ry="8" fill="url(#flame-gradient)" />
+                            </g>
+                        </g>
+
+                        <!-- Engine 2: Digital -->
+                        <g class="engine engine-2" data-engine="digital" data-active="false">
+                            <rect x="285" y="60" width="50" height="25" rx="5" class="engine-body" />
+                            <rect x="275" y="62" width="15" height="21" rx="2" class="engine-intake" />
+                            <g class="flame" opacity="0">
+                                <ellipse cx="350" cy="72" rx="20" ry="8" fill="url(#flame-gradient)" />
+                            </g>
+                        </g>
+
+                        <!-- Engine 3: Ngajilah -->
+                        <g class="engine engine-3" data-engine="ngajilah" data-active="false">
+                            <rect x="175" y="215" width="50" height="25" rx="5" class="engine-body" />
+                            <rect x="165" y="217" width="15" height="21" rx="2" class="engine-intake" />
+                            <g class="flame" opacity="0">
+                                <ellipse cx="240" cy="228" rx="20" ry="8" fill="url(#flame-gradient)" />
+                            </g>
+                        </g>
+
+                        <!-- Engine 4: Milah Tour -->
+                        <g class="engine engine-4" data-engine="milah" data-active="false">
+                            <rect x="285" y="215" width="50" height="25" rx="5" class="engine-body" />
+                            <rect x="275" y="217" width="15" height="21" rx="2" class="engine-intake" />
+                            <g class="flame" opacity="0">
+                                <ellipse cx="350" cy="228" rx="20" ry="8" fill="url(#flame-gradient)" />
+                            </g>
+                        </g>
+
+                        <!-- Windows -->
+                        <g class="windows">
+                            <circle cx="180" cy="145" r="5" fill="#38bdf8" opacity="0.8" />
+                            <circle cx="200" cy="145" r="5" fill="#38bdf8" opacity="0.8" />
+                            <circle cx="220" cy="145" r="5" fill="#38bdf8" opacity="0.8" />
+                            <circle cx="240" cy="145" r="5" fill="#38bdf8" opacity="0.8" />
+                            <circle cx="260" cy="145" r="5" fill="#38bdf8" opacity="0.8" />
+                            <circle cx="280" cy="145" r="5" fill="#38bdf8" opacity="0.8" />
+                            <circle cx="300" cy="145" r="5" fill="#38bdf8" opacity="0.8" />
+                        </g>
+
+                        <!-- Gradients -->
+                        <defs>
+                            <linearGradient id="flame-gradient" x1="0%" y1="0%" x2="100%" y2="0%">
+                                <stop offset="0%" style="stop-color:#ff6b35;stop-opacity:1" />
+                                <stop offset="50%" style="stop-color:#f7c531;stop-opacity:1" />
+                                <stop offset="100%" style="stop-color:#ff6b35;stop-opacity:0" />
+                            </linearGradient>
+                            <linearGradient id="fuselage-gradient" x1="0%" y1="0%" x2="0%" y2="100%">
+                                <stop offset="0%" style="stop-color:#4a5568" />
+                                <stop offset="50%" style="stop-color:#2d3748" />
+                                <stop offset="100%" style="stop-color:#1a202c" />
+                            </linearGradient>
+                        </defs>
+                    </svg>
+
+                    <!-- Engine Labels -->
+                    <div class="engine-labels">
+                        <div class="engine-label label-1" data-engine="placement">
+                            <span class="engine-icon">🎪</span>
+                            <span class="engine-name">Placement Ads</span>
+                            <span class="engine-desc">B2B & Summit</span>
+                        </div>
+                        <div class="engine-label label-2" data-engine="digital">
+                            <span class="engine-icon">💻</span>
+                            <span class="engine-name">Digital</span>
+                            <span class="engine-desc">Tech & Platforms</span>
+                        </div>
+                        <div class="engine-label label-3" data-engine="ngajilah">
+                            <span class="engine-icon">📖</span>
+                            <span class="engine-name">Ngajilah</span>
+                            <span class="engine-desc">Islamic Community</span>
+                        </div>
+                        <div class="engine-label label-4" data-engine="milah">
+                            <span class="engine-icon">✈️</span>
+                            <span class="engine-name">Milah Tour</span>
+                            <span class="engine-desc">Travel & Logistics</span>
+                        </div>
                     </div>
-                    <div class="pillar-card fragment fade-up" style="border-top: 4px solid #8b5cf6;">
-                        <div class="icon">💻</div>
-                        <h4>Digital</h4>
-                        <p>Tech & Platforms</p>
-                    </div>
-                    <div class="pillar-card fragment fade-up" style="border-top: 4px solid #10b981;">
-                        <div class="icon">📖</div>
-                        <h4>Ngajilah</h4>
-                        <p>Islamic Community</p>
-                    </div>
-                    <div class="pillar-card fragment fade-up" style="border-top: 4px solid #f97316;">
-                        <div class="icon">✈️</div>
-                        <h4>Milah Tour</h4>
-                        <p>Travel & Logistics</p>
-                    </div>
+                </div>
+
+                <!-- Status Message -->
+                <div class="airplane-status" id="airplane-status">
+                    <span class="status-icon">💡</span>
+                    <span class="status-text">Hover over each engine to power it up!</span>
+                </div>
+
+                <!-- Synergy Message -->
+                <div class="synergy-message fragment fade-up">
+                    <p>🎯 <strong>All 4 engines must work in synergy</strong> to reach our destination: <em>Sustainable
+                            Impact</em></p>
                 </div>
             </section>
 

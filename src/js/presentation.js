@@ -332,3 +332,127 @@ document.addEventListener('DOMContentLoaded', () => {
 
 // Make Reveal globally accessible for agenda navigation
 window.Reveal = deck;
+
+// ================================================
+// BOEING AIRPLANE VISUALIZATION INTERACTIVITY
+// ================================================
+document.addEventListener('DOMContentLoaded', () => {
+    const airplaneContainer = document.getElementById('airplane-viz');
+    const airplaneStatus = document.getElementById('airplane-status');
+
+    if (!airplaneContainer) return;
+
+    const engines = airplaneContainer.querySelectorAll('.engine');
+    const engineLabels = airplaneContainer.querySelectorAll('.engine-label');
+    let activeEngines = new Set();
+
+    const engineNames = {
+        'placement': '🎪 Placement Ads',
+        'digital': '💻 Digital',
+        'ngajilah': '📖 Ngajilah',
+        'milah': '✈️ Milah Tour'
+    };
+
+    // Update status message
+    function updateStatus() {
+        const count = activeEngines.size;
+        const statusIcon = airplaneStatus.querySelector('.status-icon');
+        const statusText = airplaneStatus.querySelector('.status-text');
+
+        airplaneStatus.classList.remove('success', 'warning');
+
+        if (count === 0) {
+            statusIcon.textContent = '💡';
+            statusText.textContent = 'Hover over each engine to power it up!';
+        } else if (count === 4) {
+            airplaneStatus.classList.add('success');
+            statusIcon.textContent = '🚀';
+            statusText.textContent = 'All engines running! Ready for takeoff to Sustainable Impact!';
+            airplaneContainer.classList.add('all-active');
+        } else {
+            airplaneStatus.classList.add('warning');
+            statusIcon.textContent = '⚠️';
+            statusText.textContent = `Only ${count}/4 engines active. Need all 4 for balanced flight!`;
+            airplaneContainer.classList.remove('all-active');
+        }
+    }
+
+    // Engine hover events
+    engines.forEach(engine => {
+        const engineType = engine.dataset.engine;
+
+        engine.addEventListener('mouseenter', () => {
+            engine.classList.add('active');
+            activeEngines.add(engineType);
+
+            // Highlight corresponding label
+            engineLabels.forEach(label => {
+                if (label.dataset.engine === engineType) {
+                    label.classList.add('active');
+                }
+            });
+
+            updateStatus();
+        });
+
+        engine.addEventListener('mouseleave', () => {
+            engine.classList.remove('active');
+            activeEngines.delete(engineType);
+
+            // Remove label highlight
+            engineLabels.forEach(label => {
+                if (label.dataset.engine === engineType) {
+                    label.classList.remove('active');
+                }
+            });
+
+            updateStatus();
+        });
+
+        // Click to toggle persistent active state
+        engine.addEventListener('click', () => {
+            if (engine.dataset.active === 'true') {
+                engine.dataset.active = 'false';
+                engine.classList.remove('active');
+                activeEngines.delete(engineType);
+            } else {
+                engine.dataset.active = 'true';
+                engine.classList.add('active');
+                activeEngines.add(engineType);
+            }
+            updateStatus();
+        });
+    });
+
+    // Label hover events (sync with engines)
+    engineLabels.forEach(label => {
+        const engineType = label.dataset.engine;
+        const correspondingEngine = airplaneContainer.querySelector(`.engine[data-engine="${engineType}"]`);
+
+        label.addEventListener('mouseenter', () => {
+            label.classList.add('active');
+            if (correspondingEngine) {
+                correspondingEngine.classList.add('active');
+                activeEngines.add(engineType);
+            }
+            updateStatus();
+        });
+
+        label.addEventListener('mouseleave', () => {
+            if (correspondingEngine && correspondingEngine.dataset.active !== 'true') {
+                correspondingEngine.classList.remove('active');
+                label.classList.remove('active');
+                activeEngines.delete(engineType);
+            }
+            updateStatus();
+        });
+
+        label.addEventListener('click', () => {
+            if (correspondingEngine) {
+                correspondingEngine.click();
+            }
+        });
+    });
+
+    console.log('%c ✈️ Boeing Visualization Ready', 'color: #38bdf8; font-size: 12px;');
+});
