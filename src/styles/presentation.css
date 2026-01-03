@@ -556,48 +556,53 @@
 }
 
 /* ================================================
-   4 PILLARS SLIDE - NEW DESIGN
+   4 PILLARS SLIDE - CARDS AROUND AIRPLANE
    ================================================ */
 .slide-pillars {
     text-align: center !important;
     display: flex !important;
     flex-direction: column !important;
-    justify-content: flex-start !important;
-    padding-top: 0.5em !important;
+    align-items: center !important;
+    padding: 0.3em !important;
 }
 
 .slide-pillars h2 {
     text-align: center;
     border-bottom: none;
     margin-bottom: 0.1em;
-    font-size: 1.8em;
+    font-size: 1.6em;
 }
 
 .pillars-subtitle {
-    font-size: 0.55em;
+    font-size: 0.5em;
     color: var(--text-muted);
-    margin-bottom: 0.3em;
+    margin-bottom: 0.2em;
     font-style: italic;
 }
 
-/* Airplane Wrapper */
-.airplane-wrapper {
+/* Airplane Scene - Container for airplane and cards */
+.airplane-scene {
     position: relative;
     width: 100%;
-    max-width: 380px;
-    margin: 0 auto 0.3em;
+    max-width: 800px;
+    height: 400px;
+    margin: 0 auto;
 }
 
-.airplane-image {
-    width: 100%;
+.airplane-scene .airplane-image {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 350px;
+    max-width: 55%;
     height: auto;
-    max-height: 140px;
-    object-fit: contain;
     transition: all 0.5s ease;
-    filter: drop-shadow(0 8px 20px rgba(0, 0, 0, 0.3));
+    filter: drop-shadow(0 10px 30px rgba(0, 0, 0, 0.4));
+    z-index: 1;
 }
 
-.airplane-wrapper.flying .airplane-image {
+.airplane-scene.flying .airplane-image {
     animation: airplane-fly 2s ease-in-out infinite;
 }
 
@@ -605,147 +610,108 @@
 
     0%,
     100% {
-        transform: translateY(0) rotate(0deg);
+        transform: translate(-50%, -50%) rotate(0deg);
     }
 
     50% {
-        transform: translateY(-8px) rotate(-1deg);
+        transform: translate(-50%, calc(-50% - 10px)) rotate(-2deg);
     }
 }
 
-/* Engine Indicators - dots on airplane */
-.engine-indicators {
+/* Engine Cards - positioned around airplane */
+.engine-card {
     position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    pointer-events: none;
-}
-
-.engine-dot {
-    position: absolute;
-    width: 20px;
-    height: 20px;
-    background: rgba(56, 189, 248, 0.4);
-    border: 3px solid rgba(56, 189, 248, 0.8);
-    border-radius: 50%;
-    transition: all 0.3s ease;
-    pointer-events: auto;
+    display: flex;
+    align-items: center;
+    gap: 0.5em;
+    background: var(--bg-card);
+    border: 2px solid rgba(255, 255, 255, 0.15);
+    border-radius: 10px;
+    padding: 0.5em 0.8em;
     cursor: pointer;
+    transition: all 0.3s ease;
     z-index: 10;
+    min-width: 120px;
 }
 
-.engine-dot.active {
+.engine-card:hover {
+    border-color: rgba(56, 189, 248, 0.6);
+    transform: scale(1.05);
+}
+
+.engine-card.active {
+    border-color: #f97316;
+    background: rgba(249, 115, 22, 0.15);
+}
+
+.engine-card.active .card-dot {
     background: #f97316;
     border-color: #fbbf24;
-    box-shadow: 0 0 15px #f97316, 0 0 30px rgba(249, 115, 22, 0.5);
-    animation: pulse-glow 1s ease-in-out infinite;
+    box-shadow: 0 0 12px #f97316;
 }
 
-@keyframes pulse-glow {
-
-    0%,
-    100% {
-        box-shadow: 0 0 15px #f97316, 0 0 30px rgba(249, 115, 22, 0.5);
-    }
-
-    50% {
-        box-shadow: 0 0 20px #fbbf24, 0 0 40px rgba(251, 191, 36, 0.7);
-    }
-}
-
-/* Position engine dots - based on Boeing 747 image with 4 engines:
-   Left wing (bottom of image): dot-1 (outer), dot-2 (inner)
-   Right wing (top of image): dot-3 (outer), dot-4 (inner) 
-   Airplane faces right, 45-degree isometric view */
-.dot-1 {
-    top: 78%;
-    left: 18%;
-}
-
-.dot-2 {
-    top: 73%;
-    left: 28%;
-}
-
-.dot-3 {
-    top: 48%;
-    left: 15%;
-}
-
-.dot-4 {
-    top: 52%;
-    left: 25%;
-}
-
-/* Pillar Cards Grid */
-.pillar-cards-grid {
-    display: grid !important;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 0.8em;
-    width: 100%;
-    margin-top: 0.5em;
-    margin-bottom: 0.5em;
-    padding: 0 0.5em;
-}
-
-.pillar-card-new {
-    background: var(--bg-card);
-    border: 2px solid rgba(255, 255, 255, 0.1);
-    border-radius: 10px;
-    padding: 0.6em 0.4em;
-    cursor: pointer;
+/* Card dot (engine indicator) */
+.card-dot {
+    width: 16px;
+    height: 16px;
+    min-width: 16px;
+    background: rgba(56, 189, 248, 0.3);
+    border: 3px solid rgba(56, 189, 248, 0.7);
+    border-radius: 50%;
     transition: all 0.3s ease;
+}
+
+/* Card content */
+.card-content {
     display: flex;
     flex-direction: column;
-    align-items: center;
-    gap: 0.2em;
-    position: relative;
-    overflow: hidden;
-    min-height: 80px;
+    align-items: flex-start;
+    gap: 0;
 }
 
-.pillar-card-new:hover {
-    border-color: rgba(56, 189, 248, 0.5);
-    transform: translateY(-3px);
+.card-icon {
+    font-size: 1.2em;
+    line-height: 1;
 }
 
-.pillar-card-new.active {
-    border-color: #f97316;
-    background: rgba(249, 115, 22, 0.1);
-}
-
-.pillar-card-new.active .pillar-indicator {
-    opacity: 1;
-}
-
-.pillar-indicator {
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    height: 4px;
-    background: linear-gradient(90deg, #f97316, #fbbf24);
-    opacity: 0;
-    transition: opacity 0.3s ease;
-}
-
-.pillar-icon {
-    font-size: 1.8em;
-}
-
-.pillar-info h4 {
-    font-size: 0.6em;
-    margin: 0;
+.card-name {
+    font-size: 0.55em;
+    font-weight: 700;
     color: #fff;
-    font-weight: 600;
 }
 
-.pillar-info p {
-    font-size: 0.45em;
-    margin: 0;
+.card-desc {
+    font-size: 0.4em;
     color: var(--text-muted);
+}
+
+/* Position each card near its engine
+   Airplane faces LEFT-BOTTOM (kiri bawah)
+   Left wing (atas gambar) = card-1, card-2
+   Right wing (bawah gambar) = card-3, card-4 */
+
+/* Card 1: Placement Ads - Left wing outer (top-left) */
+.card-1 {
+    top: 8%;
+    left: 5%;
+}
+
+/* Card 2: Digital - Left wing inner (top-center-left) */
+.card-2 {
+    top: 25%;
+    left: 8%;
+}
+
+/* Card 3: Ngajilah - Right wing outer (bottom-right) */
+.card-3 {
+    bottom: 15%;
+    right: 5%;
+}
+
+/* Card 4: Milah Tour - Right wing inner (center-right) */
+.card-4 {
+    bottom: 35%;
+    right: 8%;
 }
 
 /* Flight Status */
@@ -754,11 +720,12 @@
     align-items: center;
     justify-content: center;
     gap: 0.5em;
-    padding: 0.5em 1em;
+    padding: 0.4em 1em;
     background: var(--bg-card);
     border-radius: 8px;
-    font-size: 0.55em;
+    font-size: 0.5em;
     transition: all 0.3s ease;
+    margin-top: 0.3em;
 }
 
 .flight-status.success {

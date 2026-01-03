@@ -342,13 +342,12 @@ deck.on('ready', () => {
 // 4 PILLARS VISUALIZATION INTERACTIVITY
 // ================================================
 document.addEventListener('DOMContentLoaded', () => {
-    const airplaneWrapper = document.getElementById('airplane-viz');
+    const airplaneScene = document.getElementById('airplane-viz');
     const flightStatus = document.getElementById('flight-status');
 
-    if (!airplaneWrapper || !flightStatus) return;
+    if (!airplaneScene || !flightStatus) return;
 
-    const pillarCards = document.querySelectorAll('.pillar-card-new');
-    const engineDots = document.querySelectorAll('.engine-dot');
+    const engineCards = document.querySelectorAll('.engine-card');
     let activeEngines = new Set();
 
     // Update status message
@@ -361,35 +360,22 @@ document.addEventListener('DOMContentLoaded', () => {
 
         if (count === 0) {
             statusIcon.textContent = '💡';
-            statusText.textContent = 'Click each pillar to power up the engine!';
+            statusText.textContent = 'Click each card to power up the engine!';
         } else if (count === 4) {
             flightStatus.classList.add('success');
             statusIcon.textContent = '🚀';
             statusText.textContent = 'All 4 engines running! Ready for takeoff! ✈️';
-            airplaneWrapper.classList.add('flying');
+            airplaneScene.classList.add('flying');
         } else {
             flightStatus.classList.add('warning');
             statusIcon.textContent = '⚠️';
             statusText.textContent = `Only ${count}/4 engines active. Need all 4 for balanced flight!`;
-            airplaneWrapper.classList.remove('flying');
+            airplaneScene.classList.remove('flying');
         }
     }
 
-    // Sync engine dot with pillar card
-    function syncEngineDot(engineType, isActive) {
-        engineDots.forEach(dot => {
-            if (dot.dataset.engine === engineType) {
-                if (isActive) {
-                    dot.classList.add('active');
-                } else {
-                    dot.classList.remove('active');
-                }
-            }
-        });
-    }
-
-    // Pillar card click handler
-    pillarCards.forEach(card => {
+    // Engine card click handler
+    engineCards.forEach(card => {
         const engineType = card.dataset.engine;
 
         card.addEventListener('click', () => {
@@ -397,28 +383,12 @@ document.addEventListener('DOMContentLoaded', () => {
                 // Deactivate
                 card.classList.remove('active');
                 activeEngines.delete(engineType);
-                syncEngineDot(engineType, false);
             } else {
                 // Activate
                 card.classList.add('active');
                 activeEngines.add(engineType);
-                syncEngineDot(engineType, true);
             }
             updateStatus();
-        });
-    });
-
-    // Engine dot click handler (optional - also clickable)
-    engineDots.forEach(dot => {
-        const engineType = dot.dataset.engine;
-
-        dot.addEventListener('click', () => {
-            // Find corresponding pillar card and trigger click
-            pillarCards.forEach(card => {
-                if (card.dataset.engine === engineType) {
-                    card.click();
-                }
-            });
         });
     });
 

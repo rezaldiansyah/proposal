@@ -110,51 +110,45 @@
                 <p class="pillars-subtitle">Like a Boeing 747, all 4 engines must work together to reach our destination
                 </p>
 
-                <!-- Airplane Image with Interactive Engines -->
-                <div class="airplane-wrapper" id="airplane-viz">
+                <!-- Airplane Container with Cards Around It -->
+                <div class="airplane-scene" id="airplane-viz">
+                    <!-- Airplane Image -->
                     <img src="/images/boeing-747.png" alt="Boeing 747" class="airplane-image" id="airplane-img" />
 
-                    <!-- Engine Indicators (overlay on airplane) -->
-                    <div class="engine-indicators">
-                        <div class="engine-dot dot-1" data-engine="placement" title="Placement Ads"></div>
-                        <div class="engine-dot dot-2" data-engine="digital" title="Digital"></div>
-                        <div class="engine-dot dot-3" data-engine="ngajilah" title="Ngajilah"></div>
-                        <div class="engine-dot dot-4" data-engine="milah" title="Milah Tour"></div>
+                    <!-- Cards positioned near engines -->
+                    <!-- Left wing (top-left of image) - facing left-bottom -->
+                    <div class="engine-card card-1" data-engine="placement">
+                        <div class="card-dot"></div>
+                        <div class="card-content">
+                            <span class="card-icon">🎪</span>
+                            <span class="card-name">Placement Ads</span>
+                            <span class="card-desc">B2B & Summit</span>
+                        </div>
                     </div>
-                </div>
+                    <div class="engine-card card-2" data-engine="digital">
+                        <div class="card-dot"></div>
+                        <div class="card-content">
+                            <span class="card-icon">💻</span>
+                            <span class="card-name">Digital</span>
+                            <span class="card-desc">Tech & Platforms</span>
+                        </div>
+                    </div>
 
-                <!-- 4 Pillar Cards Grid -->
-                <div class="pillar-cards-grid">
-                    <div class="pillar-card-new" data-engine="placement">
-                        <div class="pillar-indicator"></div>
-                        <div class="pillar-icon">🎪</div>
-                        <div class="pillar-info">
-                            <h4>Placement Ads</h4>
-                            <p>B2B & Summit</p>
+                    <!-- Right wing (bottom-right of image) -->
+                    <div class="engine-card card-3" data-engine="ngajilah">
+                        <div class="card-dot"></div>
+                        <div class="card-content">
+                            <span class="card-icon">📖</span>
+                            <span class="card-name">Ngajilah</span>
+                            <span class="card-desc">Islamic Community</span>
                         </div>
                     </div>
-                    <div class="pillar-card-new" data-engine="digital">
-                        <div class="pillar-indicator"></div>
-                        <div class="pillar-icon">💻</div>
-                        <div class="pillar-info">
-                            <h4>Digital</h4>
-                            <p>Tech & Platforms</p>
-                        </div>
-                    </div>
-                    <div class="pillar-card-new" data-engine="ngajilah">
-                        <div class="pillar-indicator"></div>
-                        <div class="pillar-icon">📖</div>
-                        <div class="pillar-info">
-                            <h4>Ngajilah</h4>
-                            <p>Islamic Community</p>
-                        </div>
-                    </div>
-                    <div class="pillar-card-new" data-engine="milah">
-                        <div class="pillar-indicator"></div>
-                        <div class="pillar-icon">✈️</div>
-                        <div class="pillar-info">
-                            <h4>Milah Tour</h4>
-                            <p>Travel & Logistics</p>
+                    <div class="engine-card card-4" data-engine="milah">
+                        <div class="card-dot"></div>
+                        <div class="card-content">
+                            <span class="card-icon">✈️</span>
+                            <span class="card-name">Milah Tour</span>
+                            <span class="card-desc">Travel & Logistics</span>
                         </div>
                     </div>
                 </div>
@@ -162,7 +156,7 @@
                 <!-- Status Message -->
                 <div class="flight-status" id="flight-status">
                     <span class="status-icon">💡</span>
-                    <span class="status-text">Click each pillar to power up the engine!</span>
+                    <span class="status-text">Click each card to power up the engine!</span>
                 </div>
             </section>
 
