@@ -560,18 +560,23 @@
    ================================================ */
 .slide-pillars {
     text-align: center !important;
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: flex-start !important;
+    padding-top: 0.5em !important;
 }
 
 .slide-pillars h2 {
     text-align: center;
     border-bottom: none;
-    margin-bottom: 0.3em;
+    margin-bottom: 0.1em;
+    font-size: 1.8em;
 }
 
 .pillars-subtitle {
-    font-size: 0.6em;
+    font-size: 0.55em;
     color: var(--text-muted);
-    margin-bottom: 0.8em;
+    margin-bottom: 0.3em;
     font-style: italic;
 }
 
@@ -579,17 +584,17 @@
 .airplane-wrapper {
     position: relative;
     width: 100%;
-    max-width: 500px;
-    margin: 0 auto 1em;
+    max-width: 380px;
+    margin: 0 auto 0.3em;
 }
 
 .airplane-image {
     width: 100%;
     height: auto;
-    max-height: 180px;
+    max-height: 140px;
     object-fit: contain;
     transition: all 0.5s ease;
-    filter: drop-shadow(0 10px 30px rgba(0, 0, 0, 0.3));
+    filter: drop-shadow(0 8px 20px rgba(0, 0, 0, 0.3));
 }
 
 .airplane-wrapper.flying .airplane-image {
