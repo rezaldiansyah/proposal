@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description"
+    content="My Projects - Interactive presentations and strategic proposals for business transformation.">
+  <title>My Projects | Presentations & Proposals</title>
+  <link rel="stylesheet" href="/src/styles/main.css">
+  <link rel="icon" type="image/svg+xml"
+    href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>📁</text></svg>">
+</head>
+
+<body>
+  <!-- Hero Section -->
+  <header class="hero hero--minimal">
+    <div class="hero__content animate-fade-in-up">
+      <h1 class="hero__title">My Projects</h1>
+      <p class="hero__subtitle">Interactive presentations and strategic proposals for business transformation.</p>
+    </div>
+  </header>
+
+  <!-- Main Content -->
+  <main class="container">
+
+    <!-- SECTION: PROJECTS -->
+    <section class="section" id="projects">
+      <div class="section-header">
+        <span class="section-header__icon">🔒</span>
+        <h2 class="section-header__title">Projects</h2>
+        <p class="section-header__subtitle">Protected presentations. Enter PIN to access.</p>
+      </div>
+
+      <div class="cards-grid">
+        <!-- Card: Habits Media Network -->
+        <article class="card card--protected animate-fade-in-up" data-project="habits-media" data-pin="123456">
+          <div class="card__thumbnail">
+            <span class="card__thumbnail-icon">📺</span>
+          </div>
+          <div class="card__content">
+            <div class="card__badges">
+              <span class="card__badge card__badge--accent">Strategic</span>
+              <span class="card__badge card__badge--lock">🔒 Protected</span>
+            </div>
+            <h3 class="card__title">Habits Media Network</h3>
+            <p class="card__description">
+              Strategic transformation plan, 90-day roadmap, B2B pivot strategy, and media network integration.
+            </p>
+            <div class="card__meta">
+              <span class="card__meta-item">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+                  <line x1="16" y1="2" x2="16" y2="6"></line>
+                  <line x1="8" y1="2" x2="8" y2="6"></line>
+                  <line x1="3" y1="10" x2="21" y2="10"></line>
+                </svg>
+                January 2026
+              </span>
+              <span class="card__meta-item">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon>
+                </svg>
+                14 Slides
+              </span>
+            </div>
+          </div>
+        </article>
+
+        <!-- Coming Soon Card -->
+        <article class="card card--disabled animate-fade-in-up animate-delay-1">
+          <div class="card__thumbnail">
+            <span class="card__thumbnail-icon">🚧</span>
+          </div>
+          <div class="card__content">
+            <span class="card__badge card__badge--muted">Coming Soon</span>
+            <h3 class="card__title">More Projects</h3>
+            <p class="card__description">Additional project presentations will be added here.</p>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- SECTION: PROPOSALS -->
+    <section class="section" id="proposals">
+      <div class="section-header">
+        <span class="section-header__icon">📋</span>
+        <h2 class="section-header__title">Proposals</h2>
+        <p class="section-header__subtitle">Business proposals and pitch decks.</p>
+      </div>
+
+      <div class="cards-grid">
+        <!-- Card: Pinara Digital -->
+        <article class="card animate-fade-in-up">
+          <a href="/proposals/pinara-digital/" class="card__link">
+            <div class="card__thumbnail card__thumbnail--pink">
+              <span class="card__thumbnail-icon">🎨</span>
+            </div>
+            <div class="card__content">
+              <span class="card__badge card__badge--pink">Proposal</span>
+              <h3 class="card__title">Pinara Digital</h3>
+              <p class="card__description">
+                Digital agency proposal for creative services and digital transformation solutions.
+              </p>
+              <div class="card__meta">
+                <span class="card__meta-item">Proposal</span>
+              </div>
+            </div>
+          </a>
+        </article>
+
+        <!-- Card: Shifr Asia Innovations -->
+        <article class="card animate-fade-in-up animate-delay-1">
+          <a href="/proposals/shifr-asia/" class="card__link">
+            <div class="card__thumbnail card__thumbnail--purple">
+              <span class="card__thumbnail-icon">🌏</span>
+            </div>
+            <div class="card__content">
+              <span class="card__badge card__badge--purple">Proposal</span>
+              <h3 class="card__title">Shifr Asia Innovations</h3>
+              <p class="card__description">
+                SaaS platform proposal for digital business cards and e-commerce solutions.
+              </p>
+              <div class="card__meta">
+                <span class="card__meta-item">Proposal</span>
+              </div>
+            </div>
+          </a>
+        </article>
+
+        <!-- Coming Soon Card -->
+        <article class="card card--disabled animate-fade-in-up animate-delay-2">
+          <div class="card__thumbnail">
+            <span class="card__thumbnail-icon">📝</span>
+          </div>
+          <div class="card__content">
+            <span class="card__badge card__badge--muted">Coming Soon</span>
+            <h3 class="card__title">More Proposals</h3>
+            <p class="card__description">Additional proposals will be added here.</p>
+          </div>
+        </article>
+      </div>
+    </section>
+  </main>
+
+  <!-- PIN Modal -->
+  <div class="modal" id="pin-modal">
+    <div class="modal__backdrop"></div>
+    <div class="modal__content">
+      <button class="modal__close" id="modal-close">&times;</button>
+      <div class="modal__icon">🔐</div>
+      <h3 class="modal__title">Enter PIN</h3>
+      <p class="modal__subtitle" id="modal-project-name">Project Name</p>
+      <div class="pin-input-container">
+        <input type="password" class="pin-input" maxlength="1" inputmode="numeric" pattern="[0-9]" data-index="0">
+        <input type="password" class="pin-input" maxlength="1" inputmode="numeric" pattern="[0-9]" data-index="1">
+        <input type="password" class="pin-input" maxlength="1" inputmode="numeric" pattern="[0-9]" data-index="2">
+        <input type="password" class="pin-input" maxlength="1" inputmode="numeric" pattern="[0-9]" data-index="3">
+        <input type="password" class="pin-input" maxlength="1" inputmode="numeric" pattern="[0-9]" data-index="4">
+        <input type="password" class="pin-input" maxlength="1" inputmode="numeric" pattern="[0-9]" data-index="5">
+      </div>
+      <p class="modal__error" id="pin-error">Incorrect PIN. Please try again.</p>
+      <button class="btn btn--primary" id="pin-submit">Unlock</button>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <p class="footer__text">
+      © 2026 <span class="footer__brand">My Projects.</span> All rights reserved.
+    </p>
+  </footer>
+
+  <script type="module" src="/src/js/main.js"></script>
+</body>
+
+</html>

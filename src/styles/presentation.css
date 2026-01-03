@@ -1,0 +1,380 @@
+/* ================================================
+   REVEAL.JS CUSTOM THEME - HABITS MEDIA
+   ================================================ */
+
+/* Import Base Reveal.js Styles */
+@import 'reveal.js/dist/reveal.css';
+@import 'reveal.js/dist/theme/black.css';
+
+/* Import Design Tokens */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap');
+
+/* ================================================
+   CUSTOM REVEAL THEME
+   ================================================ */
+:root {
+    --r-background-color: #0a0a0a;
+    --r-main-font: 'Poppins', sans-serif;
+    --r-main-font-size: 32px;
+    --r-main-color: #ffffff;
+    --r-heading-font: 'Poppins', sans-serif;
+    --r-heading-color: #ffffff;
+    --r-heading-letter-spacing: -0.02em;
+    --r-heading-text-transform: none;
+    --r-heading1-size: 2.5em;
+    --r-heading2-size: 1.8em;
+    --r-heading3-size: 1.3em;
+    --r-link-color: #38bdf8;
+    --r-link-color-hover: #0ea5e9;
+    --r-selection-background-color: rgba(56, 189, 248, 0.3);
+
+    /* Custom */
+    --accent: #38bdf8;
+    --accent-glow: rgba(56, 189, 248, 0.3);
+    --text-muted: #a0a0a0;
+    --bg-card: #1e1e1e;
+}
+
+.reveal {
+    font-weight: 400;
+}
+
+.reveal h1,
+.reveal h2,
+.reveal h3 {
+    font-weight: 700;
+    text-shadow: none;
+}
+
+.reveal h1 {
+    font-weight: 800;
+}
+
+/* ================================================
+   SLIDE LAYOUTS
+   ================================================ */
+
+/* Cover Slide */
+.slide-cover {
+    display: flex !important;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.slide-cover .logo {
+    font-size: 2em;
+    font-weight: 800;
+    line-height: 1.1;
+    margin-bottom: 1em;
+}
+
+.slide-cover .logo span {
+    display: block;
+}
+
+.slide-cover .logo .dot {
+    color: var(--accent);
+}
+
+.slide-cover .tagline {
+    font-size: 0.5em;
+    letter-spacing: 0.3em;
+    color: var(--accent);
+    text-transform: uppercase;
+    margin-top: 0.5em;
+}
+
+.slide-cover .title {
+    font-size: 1.2em;
+    margin-top: 1.5em;
+    font-weight: 600;
+}
+
+.slide-cover .date {
+    font-size: 0.7em;
+    color: var(--text-muted);
+    margin-top: 1em;
+}
+
+/* Section Divider */
+.slide-section {
+    background: radial-gradient(ellipse at center, var(--accent-glow) 0%, transparent 70%);
+}
+
+.slide-section h2 {
+    font-size: 2.5em !important;
+    font-weight: 800;
+}
+
+.slide-section .section-number {
+    font-size: 3em;
+    font-weight: 800;
+    color: var(--accent);
+    opacity: 0.3;
+    margin-bottom: -0.5em;
+}
+
+/* Content Slide */
+.slide-content {
+    text-align: left !important;
+}
+
+.slide-content h2 {
+    margin-bottom: 0.8em;
+    padding-bottom: 0.3em;
+    border-bottom: 2px solid var(--accent);
+}
+
+.slide-content ul {
+    list-style: none;
+    padding: 0;
+}
+
+.slide-content li {
+    padding: 0.3em 0;
+    padding-left: 1.5em;
+    position: relative;
+}
+
+.slide-content li::before {
+    content: '→';
+    position: absolute;
+    left: 0;
+    color: var(--accent);
+}
+
+/* Chart Slide */
+.slide-chart {
+    display: flex !important;
+    flex-direction: column;
+}
+
+.slide-chart h2 {
+    margin-bottom: 0.5em;
+}
+
+.chart-container {
+    flex: 1;
+    width: 100%;
+    min-height: 400px;
+}
+
+/* Grid Layout */
+.grid-2 {
+    display: grid !important;
+    grid-template-columns: 1fr 1fr;
+    gap: 2em;
+    width: 100%;
+}
+
+.grid-4 {
+    display: grid !important;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5em;
+    width: 100%;
+}
+
+/* Cards */
+.info-card {
+    background: var(--bg-card);
+    border-radius: 12px;
+    padding: 1.5em;
+    text-align: left;
+}
+
+.info-card.accent {
+    border-left: 4px solid var(--accent);
+}
+
+.info-card h4 {
+    font-size: 0.9em;
+    color: var(--accent);
+    margin-bottom: 0.5em;
+}
+
+.info-card p {
+    font-size: 0.7em;
+    color: var(--text-muted);
+    margin: 0;
+}
+
+/* Pillar Cards */
+.pillar-card {
+    background: var(--bg-card);
+    border-radius: 12px;
+    padding: 1em;
+    text-align: center;
+    transition: transform 0.3s ease;
+}
+
+.pillar-card:hover {
+    transform: scale(1.05);
+}
+
+.pillar-card .icon {
+    font-size: 2em;
+    margin-bottom: 0.3em;
+}
+
+.pillar-card h4 {
+    font-size: 0.8em;
+    margin-bottom: 0.3em;
+}
+
+.pillar-card p {
+    font-size: 0.5em;
+    color: var(--text-muted);
+    margin: 0;
+}
+
+/* Methodology Cards */
+.method-grid {
+    display: grid !important;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1em;
+}
+
+.method-card {
+    background: var(--bg-card);
+    border-radius: 8px;
+    padding: 1em;
+    text-align: center;
+}
+
+.method-card .name {
+    font-size: 0.7em;
+    font-weight: 700;
+    color: var(--accent);
+    margin-bottom: 0.3em;
+}
+
+.method-card .desc {
+    font-size: 0.5em;
+    color: var(--text-muted);
+}
+
+/* Timeline */
+.timeline {
+    display: flex;
+    justify-content: space-between;
+    position: relative;
+    margin-top: 2em;
+}
+
+.timeline::before {
+    content: '';
+    position: absolute;
+    top: 20px;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, var(--accent), transparent);
+}
+
+.timeline-item {
+    text-align: center;
+    position: relative;
+    z-index: 1;
+}
+
+.timeline-item .marker {
+    width: 40px;
+    height: 40px;
+    background: var(--accent);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 0.5em;
+    font-weight: 700;
+}
+
+.timeline-item .label {
+    font-size: 0.6em;
+    font-weight: 600;
+}
+
+.timeline-item .desc {
+    font-size: 0.5em;
+    color: var(--text-muted);
+    max-width: 150px;
+}
+
+/* Highlight Text */
+.highlight {
+    color: var(--accent);
+    font-weight: 600;
+}
+
+.big-number {
+    font-size: 3em;
+    font-weight: 800;
+    color: var(--accent);
+    line-height: 1;
+}
+
+/* Stats */
+.stat-grid {
+    display: grid !important;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2em;
+}
+
+.stat-item {
+    text-align: center;
+}
+
+.stat-item .value {
+    font-size: 2.5em;
+    font-weight: 800;
+    color: var(--accent);
+}
+
+.stat-item .label {
+    font-size: 0.6em;
+    color: var(--text-muted);
+}
+
+/* CTA */
+.cta-box {
+    background: linear-gradient(135deg, rgba(56, 189, 248, 0.2), transparent);
+    border: 2px solid var(--accent);
+    border-radius: 16px;
+    padding: 2em;
+    text-align: center;
+    margin-top: 1em;
+}
+
+.cta-box h3 {
+    margin-bottom: 0.5em;
+}
+
+/* Back Link */
+.back-link {
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    z-index: 100;
+    background: var(--bg-card);
+    padding: 0.5em 1em;
+    border-radius: 8px;
+    font-size: 14px;
+    text-decoration: none;
+    color: var(--text-muted);
+    transition: color 0.3s ease;
+}
+
+.back-link:hover {
+    color: var(--accent);
+}
+
+/* Fragments */
+.reveal .fragment.fade-up {
+    transform: translateY(20px);
+}
+
+.reveal .fragment.fade-up.visible {
+    transform: translateY(0);
+}
