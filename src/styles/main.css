@@ -441,6 +441,14 @@ img {
   animation-delay: 0.3s;
 }
 
+.animate-delay-4 {
+  animation-delay: 0.4s;
+}
+
+.animate-delay-5 {
+  animation-delay: 0.5s;
+}
+
 .shake {
   animation: shake 0.5s ease;
 }
@@ -555,6 +563,30 @@ img {
 
 .card__thumbnail--purple {
   background: linear-gradient(135deg, rgba(139, 92, 246, 0.2), transparent);
+}
+
+.card__badge--green {
+  background: #10b981;
+}
+
+.card__badge--blue {
+  background: #3b82f6;
+}
+
+.card__badge--orange {
+  background: #f97316;
+}
+
+.card__thumbnail--green {
+  background: linear-gradient(135deg, rgba(16, 185, 129, 0.2), transparent);
+}
+
+.card__thumbnail--blue {
+  background: linear-gradient(135deg, rgba(59, 130, 246, 0.2), transparent);
+}
+
+.card__thumbnail--orange {
+  background: linear-gradient(135deg, rgba(249, 115, 22, 0.2), transparent);
 }
 
 /* ================================================
