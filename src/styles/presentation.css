@@ -656,26 +656,27 @@
 }
 
 /* Position engine dots - based on Boeing 747 image with 4 engines:
-   Left wing (bottom): dot-1 (outer), dot-2 (inner)
-   Right wing (top): dot-3 (outer), dot-4 (inner) */
+   Left wing (bottom of image): dot-1 (outer), dot-2 (inner)
+   Right wing (top of image): dot-3 (outer), dot-4 (inner) 
+   Airplane faces right, 45-degree isometric view */
 .dot-1 {
-    top: 72%;
-    left: 22%;
+    top: 78%;
+    left: 18%;
 }
 
 .dot-2 {
-    top: 68%;
-    left: 32%;
+    top: 73%;
+    left: 28%;
 }
 
 .dot-3 {
-    top: 52%;
-    left: 20%;
+    top: 48%;
+    left: 15%;
 }
 
 .dot-4 {
-    top: 55%;
-    left: 30%;
+    top: 52%;
+    left: 25%;
 }
 
 /* Pillar Cards Grid */
