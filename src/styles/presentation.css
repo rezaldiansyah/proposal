@@ -576,7 +576,7 @@
 .pillars-subtitle {
     font-size: 0.5em;
     color: var(--text-muted);
-    margin-bottom: 0.2em;
+    margin-bottom: -0.5em;
     font-style: italic;
 }
 
@@ -594,8 +594,8 @@
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    width: 350px;
-    max-width: 55%;
+    width: 900px;
+    max-width: 95%;
     height: auto;
     transition: all 0.5s ease;
     filter: drop-shadow(0 10px 30px rgba(0, 0, 0, 0.4));
@@ -642,6 +642,30 @@
 .engine-card.active {
     border-color: #f97316;
     background: rgba(249, 115, 22, 0.15);
+    box-shadow: 0 0 20px rgba(249, 115, 22, 0.4);
+}
+
+/* Flame effect on active card */
+.engine-card.active::before {
+    content: '🔥';
+    position: absolute;
+    top: -25px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 1.5em;
+    animation: flame-flicker 0.3s ease-in-out infinite alternate;
+}
+
+@keyframes flame-flicker {
+    0% {
+        opacity: 0.8;
+        transform: translateX(-50%) scale(1);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateX(-50%) scale(1.2);
+    }
 }
 
 .engine-card.active .card-dot {
@@ -650,15 +674,9 @@
     box-shadow: 0 0 12px #f97316;
 }
 
-/* Card dot (engine indicator) */
+/* Card dot (engine indicator) - HIDDEN */
 .card-dot {
-    width: 16px;
-    height: 16px;
-    min-width: 16px;
-    background: rgba(56, 189, 248, 0.3);
-    border: 3px solid rgba(56, 189, 248, 0.7);
-    border-radius: 50%;
-    transition: all 0.3s ease;
+    display: none;
 }
 
 /* Card content */
@@ -686,32 +704,31 @@
 }
 
 /* Position each card near its engine
-   Airplane faces LEFT-BOTTOM (kiri bawah)
-   Left wing (atas gambar) = card-1, card-2
-   Right wing (bawah gambar) = card-3, card-4 */
+   Airplane faces UPPER-RIGHT (kanan atas) - ascending
+   All 4 cards aligned horizontally at bottom */
 
-/* Card 1: Placement Ads - Left wing outer (top-left) */
+/* Card 1: Placement Ads */
 .card-1 {
-    top: 8%;
-    left: 5%;
+    bottom: 3%;
+    left: 2%;
 }
 
-/* Card 2: Digital - Left wing inner (top-center-left) */
+/* Card 2: Digital */
 .card-2 {
-    top: 25%;
-    left: 8%;
+    bottom: 3%;
+    left: 27%;
 }
 
-/* Card 3: Ngajilah - Right wing outer (bottom-right) */
+/* Card 3: Ngajilah */
 .card-3 {
-    bottom: 15%;
-    right: 5%;
+    bottom: 3%;
+    right: 25%;
 }
 
-/* Card 4: Milah Tour - Right wing inner (center-right) */
+/* Card 4: Milah Tour */
 .card-4 {
-    bottom: 35%;
-    right: 8%;
+    bottom: 3%;
+    right: 2%;
 }
 
 /* Flight Status */
