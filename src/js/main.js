@@ -19,7 +19,8 @@ let targetUrl = null;
 
 // Project URLs mapping
 const projectUrls = {
-    'habits-media': '/projects/habits-media/'
+    'habits-media': '/projects/habits-media/',
+    'iclean': '/projects/iclean/'
 };
 
 // Open PIN modal
